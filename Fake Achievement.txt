@@ -1,0 +1,9 @@
+local Achievements = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua%22))()
+
+-- Creates and displays your custom achievement
+Achievements.Get({
+    Title = "enter title",
+    Desc = "enter desc",
+    Reason = "enter reason",
+    Image = "", --put image address here or no image
+})
