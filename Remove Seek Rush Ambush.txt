@@ -1,0 +1,18 @@
+workspace.CurrentRooms.ChildAdded:Connect(function(Room)
+    local ChaseStart = game.ReplicatedStorage.GameData.ChaseStart.Value
+        Room = tonumber(Room.Name)
+        if Room == ChaseStart then
+        Room = workspace.CurrentRooms[Room - 1]
+        Room.Door.ClientOpen:Destroy()
+        Room.Door.Hidden:Destroy()
+        Room.Door.Door.CanCollide = false
+        Room = workspace.CurrentRooms[tonumber(Room.Name) + 1]
+        repeat task.wait(0.25) until Room:FindFirstChild("LightFixture", true)
+        for _,Object in pairs(Room:GetDescendants()) do
+            local IsLight = Object:FindFirstAncestor("LightFixture") and (Object:IsA("PointLight") or Object:IsA("SpotLight"))
+            if IsLight then
+                Object.Enabled = true
+            end
+        end
+    end
+end)
